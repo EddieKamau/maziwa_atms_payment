@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/users/models/user_model.dart';
