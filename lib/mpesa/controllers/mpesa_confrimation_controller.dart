@@ -13,13 +13,15 @@ class MpesaConfirmationController extends ResourceController{
     await _mpesaConfirmationModel.save();
 
     final String _amount = _body['TransAmount'].toString();
-    // final String _businessShortCode = _body['BusinessShortCode'].toString();
+    final String _businessShortCode = _body['BusinessShortCode'].toString();
     final String _phoneNo = _body['MSISDN'].toString();
     final String _transID = _body['TransID'].toString();
 
     // generate opt
     final OtpModel otpModel = OtpModel(
-      refNo: _phoneNo.substring(8)
+      amount: _amount,
+      refNo: _phoneNo.substring(8),
+      shortCode: _businessShortCode
     );
     await otpModel.save();
 
