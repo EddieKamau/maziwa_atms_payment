@@ -5,11 +5,11 @@ Router mpesaRoutes(Router router){
   const String baseUrl = 'paybill';
   
   router
-    .route('$baseUrl/confirmation')
+    .route('$baseUrl/confirmation/[:businessId]')
     .link(()=> MpesaConfirmationController());
   
   router
-    .route('$baseUrl/validate')
+    .route('$baseUrl/validate/[:businessId]')
     .link(()=> MpesaValidationController());
   
 
