@@ -1,6 +1,8 @@
 import 'package:maziwa_otp/models/model.dart';
 import 'package:password/password.dart';
 
+export 'package:maziwa_otp/models/model.dart' show where;
+
 class UserModel extends Model{
   UserModel({this.email, this.password})
             :super(dbUrl: databaseUrl, collectionName: usersCollection){
