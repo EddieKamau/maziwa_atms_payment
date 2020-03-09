@@ -23,8 +23,12 @@ class UserModel extends Model{
   Future<bool> verifyPassword()async{
     final Map<String, dynamic> _dbRes =await findOneBy(where.eq('email', email), fields: ['password']);
     if(_dbRes['status'] == 0){
-      final String _hash = _dbRes['body']['password'].toString();
-      return Password.verify(password, _hash);
+      try {
+        final String _hash = _dbRes['body']['password'].toString();
+        return Password.verify(password, _hash);
+      } catch (e) {
+        return false;
+      }
     } else {
       return false;
     }
