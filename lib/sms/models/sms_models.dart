@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/sms/models/sms_model.dart';
