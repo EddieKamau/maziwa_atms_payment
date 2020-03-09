@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/businesses/models/business_model.dart';

@@ -1,3 +1,4 @@
+const String businessesCollection = 'businesses';
 const String counterCollection = 'counter';
 const String mpesaConfirmationsCollection = 'mpesaConfirmations';
 const String mpesaValidationsCollection = 'mpesaValidations';

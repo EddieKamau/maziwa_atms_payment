@@ -36,11 +36,18 @@ class MaziwaOtpChannel extends ApplicationChannel {
         return Response.ok({"key": "value"});
       });
 
+    // businesses
+    businessRoutes(router);
+
     // mpesa
     mpesaRoutes(router);
+    
 
     // otp
     otpRoutes(router);
+
+    // users
+    usersRoutes(router);
 
     return router;
   }
