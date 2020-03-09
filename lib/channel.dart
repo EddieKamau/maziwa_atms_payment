@@ -39,6 +39,9 @@ class MaziwaOtpChannel extends ApplicationChannel {
     // mpesa
     mpesaRoutes(router);
 
+    // otp
+    otpRoutes(router);
+
     return router;
   }
 }

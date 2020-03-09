@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/otp/serializers/otp_verify_serializer.dart';

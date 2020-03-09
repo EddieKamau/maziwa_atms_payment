@@ -2,9 +2,11 @@ import 'dart:math';
 
 import 'package:maziwa_otp/models/model.dart';
 
+export 'package:maziwa_otp/models/model.dart' show where, modify, ObjectId;
+
 class OtpModel extends Model{
 
-  OtpModel({this.refNo})
+  OtpModel({this.refNo, this.shortCode, this.amount})
           :super(dbUrl: databaseUrl, collectionName: otpCollection){
             // generate otp
             final Random random = Random();
@@ -12,18 +14,24 @@ class OtpModel extends Model{
 
             // generate vallidTill
             vallidTill = DateTime.now().millisecondsSinceEpoch + 1800000;
+
+            document = asMap();
           }
 
 
+  final String amount;
   final String refNo;
+  final String shortCode;
   String otp;
   int vallidTill;
-  bool active;
+  bool active = true;
 
   Map<String, dynamic> asMap()=>{
     'active': active,
+    'amount': amount,
     'vallidTill': vallidTill,
     'otp': otp,
-    'refNo': refNo
+    'refNo': refNo,
+    'shortCode': shortCode,
   };
 }
