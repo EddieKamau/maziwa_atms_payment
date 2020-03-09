@@ -1,2 +1,2 @@
-const String databaseName = 'kite_bird_test';
+const String databaseName = 'maziwa_otp';
 const String databaseUrl = "mongodb://localhost:27017/$databaseName";

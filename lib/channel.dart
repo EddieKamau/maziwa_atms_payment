@@ -1,3 +1,5 @@
+import 'package:maziwa_otp/routes/routes_export.dart';
+
 import 'maziwa_otp.dart';
 
 /// This type initializes an application.
@@ -33,6 +35,9 @@ class MaziwaOtpChannel extends ApplicationChannel {
       .linkFunction((request) async {
         return Response.ok({"key": "value"});
       });
+
+    // mpesa
+    mpesaRoutes(router);
 
     return router;
   }
