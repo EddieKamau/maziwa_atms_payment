@@ -6,10 +6,11 @@ import 'package:maziwa_otp/maziwa_otp.dart';
 import 'package:maziwa_otp/sms/models/sms_models.dart';
 
 class SmsModule{
-  SmsModule({this.body, this.phoneNo});
+  SmsModule({this.body, this.phoneNo, this.businessId});
 
   final String phoneNo;
   final String body;
+  final String businessId;
 
   Future<http.Response> jarvisSendSms()async{
     final _base64E = base64Encode(utf8.encode('$consumerKey:$consumeSecret'));
@@ -32,7 +33,8 @@ class SmsModule{
   Future save() async{
     final SmsModel smsModel = SmsModel(
       phoneNo: phoneNo,
-      body: body
+      body: body,
+      businessId: businessId
     );
 
     await smsModel.save();

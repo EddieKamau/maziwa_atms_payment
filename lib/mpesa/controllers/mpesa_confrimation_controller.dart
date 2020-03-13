@@ -48,7 +48,7 @@ class MpesaConfirmationController extends ResourceController{
   Future<Response> mpesaConfirmationByBusiness(@Bind.path('businessId') String businessId)async{
     final Map<String, dynamic> _body = await request.body.decode<Map<String, dynamic>>();
 
-    final MpesaConfirmationModel _mpesaConfirmationModel = MpesaConfirmationModel(body: _body);
+    final MpesaConfirmationModel _mpesaConfirmationModel = MpesaConfirmationModel(body: _body..['businessId'] = businessId);
     await _mpesaConfirmationModel.save();
 
     final String _amount = _body['TransAmount'].toString();
@@ -58,6 +58,7 @@ class MpesaConfirmationController extends ResourceController{
 
     // generate opt
     final OtpModel otpModel = OtpModel(
+      businessId: businessId,
       amount: _amount,
       refNo: _phoneNo.substring(8),
       shortCode: _businessShortCode
@@ -66,6 +67,7 @@ class MpesaConfirmationController extends ResourceController{
 
     // send otp
     final SmsModule smsModule = SmsModule(
+      businessId: businessId,
       phoneNo: _phoneNo,
       body: '''
 Mpesa transaction $_transID accepted for milk worth Ksh.$_amount

@@ -6,4 +6,4 @@ const String mpesaTokenUrl = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?
 
 
 
-const String mpesaNotificationUrl = 'https://a94dcf7a.ngrok.io/paybill';
+const String mpesaNotificationUrl = 'http://kitebirdalpha.kiteholdings.biz:8800/paybill';

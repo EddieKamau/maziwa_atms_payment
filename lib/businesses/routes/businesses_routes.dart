@@ -1,5 +1,7 @@
 import 'package:maziwa_otp/businesses/controllers/businesses_controllers.dart';
 import 'package:maziwa_otp/maziwa_otp.dart';
+import 'package:maziwa_otp/mpesa/controllers/mpesa_controllers.dart' show PaymentsReportsController;
+import 'package:maziwa_otp/sms/controllers/sms_controllers.dart' show SmsReportsController;
 import 'package:maziwa_otp/users/auth/users_auth.dart' show UserLoginAouthVerifier;
 
 Router businessRoutes(Router router){
@@ -14,6 +16,18 @@ Router businessRoutes(Router router){
     .route('$baseUrl/simulate/[:businessId]')
     .link(() => Authorizer.basic(UserLoginAouthVerifier()))
     .link(() => BusinessSimulatePaymentController());
+
+  router
+    .route('$baseUrl/smsReports/:businessId')
+    .link(() => Authorizer.basic(UserLoginAouthVerifier()))
+    .link(() => SmsReportsController());
+
+  router
+    .route('$baseUrl/paymentReports/:businessId')
+    .link(() => Authorizer.basic(UserLoginAouthVerifier()))
+    .link(() => PaymentsReportsController());
+
+  
 
   
 
