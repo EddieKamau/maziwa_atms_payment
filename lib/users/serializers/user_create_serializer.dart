@@ -15,4 +15,15 @@ class UserCreateSerializer extends Serializable{
     password = object['password'].toString();
   }
 
+  @override
+  void read(Map<String, dynamic> object, {Iterable<String> ignore, Iterable<String> reject, Iterable<String> require}) {
+    final List<String> _reject= reject == null ? [] : reject.toList();
+    final String _email = object['email'].toString();
+    if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(_email)){
+      _reject.add('email');
+    }
+
+    super.read(object, ignore: ignore, reject: _reject, require: require);
+  }
+
 }
