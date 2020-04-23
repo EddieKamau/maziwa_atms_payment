@@ -278,6 +278,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "random_string",
+      "rootUri": "file:///home/genius/.pub-cache/hosted/pub.dartlang.org/random_string-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "safe_config",
       "rootUri": "file:///home/genius/.pub-cache/hosted/pub.dartlang.org/safe_config-2.0.2",
       "packageUri": "lib/",
@@ -410,7 +416,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-03-12T11:22:01.076779Z",
+  "generated": "2020-04-23T15:11:16.761480Z",
   "generator": "pub",
-  "generatorVersion": "2.7.1"
+  "generatorVersion": "2.7.2"
 }

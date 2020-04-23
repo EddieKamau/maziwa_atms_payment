@@ -131,7 +131,7 @@ class Model{
   Future<Map<String, dynamic>> findBySelector(SelectorBuilder selector, {List<String> exclude = const [], List<String> fields = const []}) async {
     await _db.open();
     try{
-      final List<Map<String, dynamic>> _res = await _dbCollection.find(selector.excludeFields(exclude)).toList();
+      final List<Map<String, dynamic>> _res = await _dbCollection.find(selector?.excludeFields(exclude)).toList();
       await _db.close();
       return _response(true, _res);
     } catch (e) {
