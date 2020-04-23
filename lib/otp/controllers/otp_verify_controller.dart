@@ -84,12 +84,12 @@ class OtpSubscribeController extends ResourceController{
         if(_businessIds.contains(_dbRes['body']['businessId'])){
           final ObjectId _id = ObjectId.parse(_otpObject['_id'].toJson().toString());
           final bool _active = _otpObject['active'] == true;
-          final int _vallidTill = int.parse(_otpObject['vallidTill'].toString());
+          // final int _vallidTill = int.parse(_otpObject['vallidTill'].toString());
           final String _amount = _otpObject['amount'].toString();
           final String _shortCode = _otpObject['shortCode'].toString();
 
           if(_active){
-            if(DateTime.now().millisecondsSinceEpoch < _vallidTill){
+            // if(DateTime.now().millisecondsSinceEpoch < _vallidTill){
 
               // final Map<String, dynamic> _dbRes = // if status = 1 report error
               await otpModel.findAndModify(
@@ -103,9 +103,9 @@ class OtpSubscribeController extends ResourceController{
                 "businessShortCode": _shortCode
               });
 
-            } else {
-              response = Response.badRequest(body: {"message": "Otp already expired!"});
-            }
+            // } else {
+            //   response = Response.badRequest(body: {"message": "Otp already expired!"});
+            // }
 
           } else{
             response = Response.badRequest(body: {"message": "Otp already used!"});
