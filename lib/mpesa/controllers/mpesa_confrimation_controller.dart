@@ -74,9 +74,8 @@ class MpesaConfirmationController extends ResourceController{
       businessId: businessId,
       phoneNo: _phoneNo,
       body: '''
-Mpesa transaction $_mpesaTransId accepted for milk worth Ksh.$_amount
+Mpesa transaction $_mpesaTransId accepted worth Ksh.$_amount
 Payment reference is: ${otpModel.refNo}. \nOTP is: ${otpModel.otp}
-This OTP expires after 30 minutes.
       '''
     );
     // await smsModule.jarvisSendSms();
