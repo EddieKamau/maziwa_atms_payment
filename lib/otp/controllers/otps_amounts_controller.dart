@@ -26,7 +26,7 @@ class OtpsAmountController extends ResourceController{
       }
 
 
-      response = Response.ok(_total);
+      response = Response.ok({"totalAmount": _total});
     }
 
     return response;
