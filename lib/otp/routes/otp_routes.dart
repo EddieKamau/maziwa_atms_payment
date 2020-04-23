@@ -25,6 +25,12 @@ Router otpRoutes(Router router){
     .link(() => Authorizer.basic(UserLoginAouthVerifier()))
     .link(() => FetchOtpsController());
 
+  // totals
+  router
+    .route('$baseUrl/totals/:businessId')
+    .link(() => Authorizer.basic(UserLoginAouthVerifier()))
+    .link(() => OtpsAmountController());
+
   
   
   

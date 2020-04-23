@@ -10,8 +10,7 @@ class FetchOtpsController extends ResourceController{
   Future<Response> fetchOtps(@Bind.path('businessId') String businessId)async{
 
     final Map<String, dynamic> _dbRes = await otpModel.findBySelector(
-      // where.eq('businessId', businessId)
-      null
+      where.eq('businessId', businessId)
     );
 
     if(_dbRes['status'] == 0){
