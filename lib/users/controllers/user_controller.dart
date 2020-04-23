@@ -14,9 +14,12 @@ class UserController extends ResourceController{
     );
 
     final Map<String, dynamic> _dbRes = await userModel.save();
+    print(_dbRes);
 
     if(_dbRes['status'] == 0){
       response = Response.accepted();
+    } else if(_dbRes['body']['code'] == 11000){
+      response = Response.badRequest(body: {"error": "account exist!"});
     }
 
     return response;
