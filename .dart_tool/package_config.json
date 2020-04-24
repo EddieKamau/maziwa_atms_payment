@@ -165,9 +165,9 @@
     },
     {
       "name": "mongo_dart",
-      "rootUri": "file:///home/genius/.pub-cache/hosted/pub.dartlang.org/mongo_dart-0.4.0",
+      "rootUri": "file:///home/genius/.pub-cache/git/mongo_dart-19335a6f60567501066f24770c2a762a05c9f614/",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.3"
     },
     {
       "name": "mongo_dart_query",
@@ -416,7 +416,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-04-23T15:11:16.761480Z",
+  "generated": "2020-04-24T13:44:55.991963Z",
   "generator": "pub",
   "generatorVersion": "2.7.2"
 }

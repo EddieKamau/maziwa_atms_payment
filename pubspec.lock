@@ -193,10 +193,12 @@ packages:
   mongo_dart:
     dependency: "direct main"
     description:
-      name: mongo_dart
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.0"
+      path: "."
+      ref: HEAD
+      resolved-ref: "19335a6f60567501066f24770c2a762a05c9f614"
+      url: "git://github.com/EddieKamau/mongo_dart.git"
+    source: git
+    version: "0.4.1-dev.1"
   mongo_dart_query:
     dependency: transitive
     description:
