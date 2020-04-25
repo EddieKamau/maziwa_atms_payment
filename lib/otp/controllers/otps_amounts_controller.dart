@@ -11,11 +11,11 @@ class OtpsAmountController extends ResourceController{
     double _total = 0;
 
     final Map<String, dynamic> _dbRes = await otpModel.findBySelector(
-      filter == 'active' ? 
+      (filter == 'active' ? 
       where.eq('businessId', businessId).eq('active', true) :
         filter == 'inactive' ? 
         where.eq('businessId', businessId).eq("active", false) :
-      where.eq('businessId', businessId)
+      where.eq('businessId', businessId)).fields(['amount'])
     );
 
     if(_dbRes['status'] == 0){

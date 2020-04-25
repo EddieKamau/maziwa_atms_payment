@@ -7,9 +7,13 @@ class FetchOtpsController extends ResourceController{
   final OtpModel otpModel = OtpModel();
 
   @Operation.get('businessId')
-  Future<Response> fetchOtps(@Bind.path('businessId') String businessId)async{
+  Future<Response> fetchOtps(@Bind.path('businessId') String businessId, {@Bind.query("filter") String filter})async{
 
     final Map<String, dynamic> _dbRes = await otpModel.findBySelector(
+      filter == 'active' ? 
+      where.eq('businessId', businessId).eq('active', true) :
+        filter == 'inactive' ? 
+        where.eq('businessId', businessId).eq("active", false) :
       where.eq('businessId', businessId)
     );
 
