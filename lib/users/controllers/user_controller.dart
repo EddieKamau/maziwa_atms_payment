@@ -21,7 +21,7 @@ class UserController extends ResourceController{
       // update registration token
       await regitrationTokenModel.findAndModify(
         selector: where.eq('token', request.authorization.clientID),
-        modifier: modify.set('used', true)
+        modifier: modify.set('used', true).set('consumerEmail', userCreateSerializer.email)
       );
 
       response = Response.accepted();
