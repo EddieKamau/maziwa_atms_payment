@@ -146,7 +146,8 @@ class BusinessPriceListController extends ResourceController{
 
     final Map<String, dynamic> _dbRes = await businessPriceListModel.findAndModify(
       selector: where.eq('businessId', businessId),
-      modifier: modify.push('priceList', businessPriceListSerializer.price)
+      modifier: modify.push('priceList', businessPriceListSerializer.price),
+      upsert: true
     );
 
     if(_dbRes['status'] == 0){

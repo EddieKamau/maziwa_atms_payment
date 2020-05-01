@@ -143,10 +143,10 @@ class Model{
 
 
   // find and modify
-  Future<Map<String, dynamic>> findAndModify({SelectorBuilder selector, ModifierBuilder modifier, Map<String, dynamic> obj}) async {
+  Future<Map<String, dynamic>> findAndModify({SelectorBuilder selector, ModifierBuilder modifier, Map<String, dynamic> obj, bool upsert}) async {
     await _db.open();
     try{
-      final Map<String, dynamic> _res = await _dbCollection.findAndModify(query: selector, update: obj == null ? modifier : obj, returnNew: true);
+      final Map<String, dynamic> _res = await _dbCollection.findAndModify(query: selector, update: obj == null ? modifier : obj, returnNew: true, upsert: upsert);
       await _db.close();
       return _response(true, _res);
     } catch (e) {
