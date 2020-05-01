@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/mail_server/models/mail_server_model.dart';

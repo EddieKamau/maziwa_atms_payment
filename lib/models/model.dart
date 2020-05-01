@@ -156,6 +156,20 @@ class Model{
     
   }
 
+  // find and update
+  Future<Map<String, dynamic>> update({SelectorBuilder selector, Map<String, dynamic> doc, Map<String, dynamic> obj, bool upsert}) async {
+    await _db.open();
+    try{
+      final Map<String, dynamic> _res = await _dbCollection.update(selector, doc,  upsert: upsert);
+      await _db.close();
+      return _response(true, _res);
+    } catch (e) {
+      await _db.close();
+      return _response(false, e);
+    }
+    
+  }
+
   // remove
   Future<Map<String, dynamic>> remove(SelectorBuilder selector) async {
     await _db.open();
@@ -183,6 +197,9 @@ class Model{
     await _db.open();
     try{
       await _db.ensureIndex(usersCollection, keys: {'email': 1}, unique: true, background: true, dropDups: false);
+      await _db.ensureIndex(baseUserCollection, keys: {'email': 1}, unique: true, background: true, dropDups: false);
+      // await _db.ensureIndex(businessesCollection, keys: {'shortCode': 1}, unique: true, background: true, dropDups: false);
+      await _db.ensureIndex(businessPriceListsCollection, keys: {'businessId': 1}, unique: true, background: true, dropDups: false);
     } catch (e){
       print(e);
     }

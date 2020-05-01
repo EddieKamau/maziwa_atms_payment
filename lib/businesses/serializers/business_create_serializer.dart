@@ -1,4 +1,4 @@
-import 'package:maziwa_otp/maziwa_otp.dart';
+import "package:maziwa_otp/maziwa_otp.dart";
 
 class BusinessCreateSerializer extends Serializable{
   String label;
@@ -8,17 +8,17 @@ class BusinessCreateSerializer extends Serializable{
 
   @override
   Map<String, dynamic> asMap() => {
-    'consumerKey': consumerKey,
-    'consumeSecret': consumerSecret,
-    'label': label,
-    'shortCode': shortCode,
+    "consumerKey": consumerKey,
+    "consumerSecret": consumerSecret,
+    "label": label,
+    "shortCode": shortCode,
   };
 
   @override
   void readFromMap(Map<String, dynamic> object) {
-    label = object['label'].toString();
-    shortCode = object['shortCode'].toString();
-    consumerKey = object['consumerKey'].toString();
-    consumerSecret = object['consumerSecret'].toString();
+    label = object["label"].toString();
+    shortCode = object["shortCode"].toString();
+    consumerKey = object["consumerKey"].toString();
+    consumerSecret = object["consumerSecret"].toString();
   }
 }

@@ -1,6 +1,6 @@
 import 'package:maziwa_otp/businesses/controllers/businesses_controllers.dart';
 import 'package:maziwa_otp/maziwa_otp.dart';
-import 'package:maziwa_otp/mpesa/controllers/mpesa_controllers.dart' show PaymentsReportsController, PaymentsTotals;
+import 'package:maziwa_otp/mpesa/controllers/mpesa_controllers.dart' show PaymentsReportsController, PaymentsTotals, PaymentsValidationsReportsController;
 import 'package:maziwa_otp/sms/controllers/sms_controllers.dart' show SmsReportsController;
 import 'package:maziwa_otp/users/auth/users_auth.dart';
 
@@ -28,14 +28,21 @@ Router businessRoutes(Router router){
     .link(() => PaymentsReportsController());
 
   router
+    .route('$baseUrl/paymentValidationsReports/:businessId')
+    .link(() => Authorizer.basic(UserLoginAouthVerifier()))
+    .link(() => PaymentsValidationsReportsController());
+
+
+  router
     .route('$baseUrl/totals/:businessId')
     .link(() => Authorizer.basic(UserLoginAouthVerifier()))
     .link(() => PaymentsTotals());
 
-  
-  
+  router
+    .route('$baseUrl/priceList/:businessId')
+    .link(() => Authorizer.basic(UserLoginAouthVerifier()))
+    .link(() => BusinessPriceListController());
 
-  
 
   return router;
 }

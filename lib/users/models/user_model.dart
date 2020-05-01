@@ -1,13 +1,14 @@
 import 'package:maziwa_otp/models/model.dart';
 import 'package:password/password.dart';
 
-export 'package:maziwa_otp/models/model.dart' show where;
+export 'package:maziwa_otp/models/model.dart' show where, modify, ObjectId;
 
 class UserModel extends Model{
-  UserModel({this.email, this.password})
+  UserModel({this.email, this.password, this.active})
             :super(dbUrl: databaseUrl, collectionName: usersCollection){
               // hash passord
-              hash = Password.hash(password, PBKDF2());
+              hash = Password.hash(password?? '', PBKDF2());
+              active ??= true;
 
               document = asMap();
 
@@ -15,6 +16,7 @@ class UserModel extends Model{
 
   final String email;
   final String password;
+  bool active;
   String hash;
 
   Map<String, String> asMap()=>{

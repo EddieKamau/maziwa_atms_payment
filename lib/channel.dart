@@ -1,3 +1,4 @@
+import 'package:maziwa_otp/models/model.dart' show Model, databaseUrl;
 import 'package:maziwa_otp/routes/routes_export.dart';
 
 import 'maziwa_otp.dart';
@@ -16,6 +17,9 @@ class MaziwaOtpChannel extends ApplicationChannel {
   @override
   Future prepare() async {
     logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
+    // init ensure indexes
+    final Model model = Model(dbUrl: databaseUrl);
+    await model.indexes();
   }
 
   /// Construct the request channel.
@@ -36,8 +40,12 @@ class MaziwaOtpChannel extends ApplicationChannel {
         return Response.ok({"key": "value"});
       });
 
+    // base user
+    baseUserRoute(router);
+    
     // businesses
     businessRoutes(router);
+
 
     // mpesa
     mpesaRoutes(router);

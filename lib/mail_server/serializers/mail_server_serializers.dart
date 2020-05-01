@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/mail_server/serializers/mail_server_conf_serializer.dart';

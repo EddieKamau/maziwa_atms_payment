@@ -110,6 +110,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///home/genius/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.5"
+    },
+    {
       "name": "io",
       "rootUri": "file:///home/genius/.pub-cache/hosted/pub.dartlang.org/io-0.3.3",
       "packageUri": "lib/",
@@ -144,6 +150,12 @@
       "rootUri": "file:///home/genius/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "mailer",
+      "rootUri": "file:///home/genius/.pub-cache/hosted/pub.dartlang.org/mailer-3.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "matcher",
@@ -413,10 +425,10 @@
       "name": "maziwa_otp",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.1"
+      "languageVersion": "2.6"
     }
   ],
-  "generated": "2020-04-24T13:44:55.991963Z",
+  "generated": "2020-04-29T05:26:19.233369Z",
   "generator": "pub",
   "generatorVersion": "2.7.2"
 }

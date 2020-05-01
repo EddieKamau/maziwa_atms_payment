@@ -2,6 +2,8 @@ import 'package:aqueduct/aqueduct.dart';
 import 'package:maziwa_otp/businesses/models/businesses_models.dart' show BusinessModel, where, ObjectId;
 import 'package:maziwa_otp/businesses/serializers/businesses_serializers.dart' show BusinessCreateSerializer;
 import 'package:maziwa_otp/mpesa/modules/mpesa_modules.dart' show mpesaRegisterUrlModule;
+import 'package:maziwa_otp/requests/models/requests_models.dart';
+import 'package:maziwa_otp/users/modules/user_email_byid.dart';
 
 class BusinessCreateController extends ResourceController{
 
@@ -13,6 +15,15 @@ class BusinessCreateController extends ResourceController{
     @Bind.body(require: ['label', 'shortCode', 'consumerKey', 'consumerSecret'])
     BusinessCreateSerializer businessCreateSerializer
     )async{
+      final String _email = await userEmailById(request.authorization.clientID);
+      final RequestsModel requestsModel = RequestsModel(
+        url: '/business',
+        account: _email ?? request.authorization.clientID,
+        metadata: businessCreateSerializer.toString(),
+        requestMethod: RequestMethod.postMethod
+      );
+
+      await requestsModel.save();
     
       final BusinessModel businessModel = BusinessModel(
         ownerId: request.authorization.clientID,
@@ -37,6 +48,8 @@ class BusinessCreateController extends ResourceController{
         );
 
 
+      } else if(_dbRes['body']['code'] == 11000){
+        response = Response.badRequest(body: {"error": "business exist!"});
       }
 
       return response;
@@ -44,6 +57,15 @@ class BusinessCreateController extends ResourceController{
 
   @Operation.get()
   Future<Response> fetchBusinesses()async{
+    final String _email = await userEmailById(request.authorization.clientID);
+    final RequestsModel requestsModel = RequestsModel(
+      url: '/business',
+      account: _email ?? request.authorization.clientID,
+      metadata: 'fetch all',
+      requestMethod: RequestMethod.getmethod
+    );
+
+    await requestsModel.save();
 
     final String _userId = request.authorization.clientID;
     final BusinessModel businessModel = BusinessModel();
@@ -63,6 +85,15 @@ class BusinessCreateController extends ResourceController{
   
   @Operation.delete('businessId')
   Future<Response> deleteBusiness(@Bind.path('businessId') String businessId)async{
+    final String _email = await userEmailById(request.authorization.clientID);
+    final RequestsModel requestsModel = RequestsModel(
+      url: '/business/$businessId',
+      account: _email ?? request.authorization.clientID,
+      metadata: 'delete',
+      requestMethod: RequestMethod.deleteMethod
+    );
+
+    await requestsModel.save();
 
     ObjectId _id;
     try{

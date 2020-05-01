@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/base_user/serializers/users_serializer.dart';

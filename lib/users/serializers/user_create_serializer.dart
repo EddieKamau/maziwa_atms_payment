@@ -3,16 +3,19 @@ import 'package:maziwa_otp/maziwa_otp.dart';
 class UserCreateSerializer extends Serializable{
   String email;
   String password;
+  bool active;
   @override
   Map<String, dynamic> asMap() => {
     'email': email,
-    'password': password
+    'password': password,
+    'active': active,
   };
 
   @override
   void readFromMap(Map<String, dynamic> object) {
     email = object['email'].toString();
     password = object['password'].toString();
+    active = object['active'] == true;
   }
 
   @override

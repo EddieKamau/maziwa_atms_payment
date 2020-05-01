@@ -4,6 +4,8 @@ import 'package:aqueduct/aqueduct.dart';
 import 'package:maziwa_otp/businesses/models/businesses_models.dart' show BusinessModel, where, ObjectId;
 import 'package:maziwa_otp/businesses/serializers/businesses_serializers.dart' show BusinessSimulatePaymentSerializer;
 import 'package:maziwa_otp/mpesa/modules/mpesa_modules.dart' show mpesaSimulateModule;
+import 'package:maziwa_otp/requests/models/requests_models.dart';
+import 'package:maziwa_otp/users/modules/user_email_byid.dart';
 
 class BusinessSimulatePaymentController extends ResourceController{
   
@@ -15,6 +17,15 @@ class BusinessSimulatePaymentController extends ResourceController{
     @Bind.body(require: ['amount', 'refNo']) BusinessSimulatePaymentSerializer businessSimulatePaymentSerializer,
     @Bind.path('businessId') String businessId
     )async{
+      final String _email = await userEmailById(request.authorization.clientID);
+      final RequestsModel requestsModel = RequestsModel(
+      url: '/business/simulate/$businessId',
+      account: _email ?? request.authorization.clientID,
+      metadata: businessSimulatePaymentSerializer.asMap(),
+      requestMethod: RequestMethod.postMethod
+    );
+
+    await requestsModel.save();
 
       final String _userId = request.authorization.clientID;
       ObjectId _id;

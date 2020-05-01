@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/base_user/modules/baser_user_permissions_module.dart';

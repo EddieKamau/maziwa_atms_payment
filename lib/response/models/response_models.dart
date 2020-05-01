@@ -1,0 +1,1 @@
+export 'package:maziwa_otp/response/models/response_model.dart';

@@ -1,3 +1,4 @@
+export 'package:maziwa_otp/base_user/routes/base_user_routes.dart';
 export 'package:maziwa_otp/businesses/routes/businesses_routes.dart';
 export 'package:maziwa_otp/mpesa/routes/mpesa_routes.dart';
 export 'package:maziwa_otp/otp/routes/otp_routes.dart';
