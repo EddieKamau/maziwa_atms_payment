@@ -1,5 +1,6 @@
 import 'package:maziwa_otp/maziwa_otp.dart';
 import 'package:maziwa_otp/mpesa/models/mpesa_models.dart' show MpesaConfirmationModel;
+import 'package:maziwa_otp/mpesa/modules/mpesa_modules.dart' show mpesaValidationModule;
 import 'package:maziwa_otp/otp/models/otp_models.dart' show OtpModel , ObjectId;
 import 'package:maziwa_otp/sms/modules/sms_modules.dart' show SmsModule;
 
@@ -47,6 +48,14 @@ class MpesaConfirmationController extends ResourceController{
   @Operation.post('businessId')
   Future<Response> mpesaConfirmationByBusiness(@Bind.path('businessId') String businessId)async{
     final Map<String, dynamic> _body = await request.body.decode<Map<String, dynamic>>();
+
+    final bool accept = await mpesaValidationModule(_body, businessId); 
+    if(!accept){
+      return Response.ok({
+        "ResultCode": 0,
+        "ResultDesc": "Confirmation Received Successfully"
+      });
+    }
     
     // Save mpesa message
     final ObjectId _mpesaMessageId = ObjectId();
